@@ -49,7 +49,7 @@ export default {
       this.img_url = event.form_img_url;
     },
     addIntern() {
-      this.axios.put('https://reqres.in/api/users', {
+      this.axios.put(`https://reqres.in/api/users/${this.id}`, {
         first_name: this.first_name,
         last_name: this.last_name,
         img_url: this.img_url,
