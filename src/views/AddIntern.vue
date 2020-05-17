@@ -9,6 +9,7 @@
     <InternForm :key="reload" @returnData="getFormData"></InternForm>
     <div class="message" :class="{error: error}" ref="message"></div>
     <button
+      class="green-button"
       @click="addIntern"
     >
       Dodaj
@@ -95,16 +96,5 @@ export default {
     &.error{
       color: red;
     }
-  }
-  button{
-    border-radius: 4px;
-    max-width: 600px;
-    padding: 10px 30px;
-    font-size: 20px;
-    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.308);
-    margin-top: 20px;
-    border: none;
-    background-color: #2c6929;
-    color: #fff;
   }
 </style>

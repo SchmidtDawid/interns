@@ -11,6 +11,7 @@ export default {
     };
   },
   methods: {
+    // sets default avatar if link is incorrect
     imageLoadError() {
       this.url = '/empty_avatar.png';
     },
