@@ -3,7 +3,7 @@
     <Title>Lista stażystów</Title>
     <InternList/>
     <router-link :to="{name: 'AddIntern'}">
-      <button class="green-button">Dodaj stażystę</button>
+      <button class="button green">Dodaj stażystę</button>
     </router-link>
   </div>
 </template>

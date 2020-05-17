@@ -9,7 +9,7 @@
     <InternForm :key="reload" @returnData="getFormData"></InternForm>
     <div class="message" :class="{error: error}" ref="message"></div>
     <button
-      class="green-button"
+      class="button green"
       @click="addIntern"
     >
       Dodaj

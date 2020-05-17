@@ -15,10 +15,16 @@
     ></InternForm>
     <div class="message" :class="{error: error}" ref="message"></div>
     <button
-      class="green-button"
+      class="button green"
       @click="addIntern"
     >
       Potwierdź edycję
+    </button>
+    <button
+      class="button red"
+      @click="deleteIntern"
+    >
+      Usuń stażystę
     </button>
   </div>
 </template>
@@ -57,12 +63,25 @@ export default {
         .then(() => {
           this.error = 0;
           this.$refs.message.innerHTML = 'Pomyślnie edytowano stażystę!';
-          this.reload = !this.reload;
         })
         .catch(() => {
           this.error = 1;
           this.$refs.message.innerHTML = 'Nie udało się edytować stażysty';
         });
+    },
+    deleteIntern() {
+      this.axios.delete(`https://reqres.in/api/users/${this.id}`)
+        .then(() => {
+          this.error = 0;
+          this.$refs.message.innerHTML = 'Pomyślnie usunięto stażystę!';
+        })
+        .catch(() => {
+          this.error = 1;
+          this.$refs.message.innerHTML = 'Nie udało się usunąć stażysty';
+        });
+      setTimeout(() => {
+        this.$router.push({ path: '/' });
+      }, 1000);
     },
   },
   mounted() {
