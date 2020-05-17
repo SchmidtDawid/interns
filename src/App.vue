@@ -1,32 +1,71 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <transition :name="transitionStyle">
+      <router-view/>
+    </transition>
   </div>
 </template>
 
+<script>
+export default {
+  data() {
+    return {
+      transitionStyle: '',
+    };
+  },
+  watch: {
+    // sets the appropriate animation based on the path
+    $route(to) {
+      this.transitionStyle = to.path === '/' ? 'slide-left' : 'slide-right';
+    },
+  },
+};
+</script>
+
 <style lang="scss">
+body{
+  background-color: rgb(22, 55, 87);
+}
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Lato;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+  color: #163757;
+  position: relative;
+  *{
+    box-sizing: border-box;
+  }
+  a{
+    color: inherit;
+    text-decoration: none;
+  }
+  >div{
+    position: absolute;
+    width: 100%;
   }
 }
+
+
+// animations
+.slide-left-enter-active, .slide-left-leave-active {
+  transition: all 0.3s;
+}
+.slide-left-enter {
+  transform: translatex(-100%);
+}
+.slide-left-leave-to{
+  transform: translatex(100%);
+}
+
+.slide-right-enter-active, .slide-right-leave-active {
+  transition: all 0.3s;
+}
+.slide-right-enter {
+  transform: translatex(100%);
+}
+.slide-right-leave-to{
+  transform: translatex(-100%);
+}
+
 </style>
